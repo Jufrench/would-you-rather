@@ -48,7 +48,7 @@ class Home extends Component {
     }
 }
 
-function mapStateToProps({ questions, users }) {
+function mapStateToProps({ questions }) {
     const unansweredIds = Object.keys(questions)
         .filter(q => {
             return questions[q].optionOne.votes.length === 0 

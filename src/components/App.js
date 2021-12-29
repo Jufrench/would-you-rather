@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Login from './Login';
 import Nav from './Nav';
 import Home from './Home';
-import Question from './Question';
+import NewQuestion from './NewQuestion';
 import handleInitialData from '../actions/shared'
 
 class App extends Component {
@@ -12,9 +13,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
+        <Login />
         <Nav />
         <Home />
+        <NewQuestion />
       </div>
     )
   }
