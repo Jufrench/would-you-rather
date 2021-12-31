@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 class Question extends Component {
@@ -6,9 +6,11 @@ class Question extends Component {
         const { author, optionOne, optionTwo } = this.props.question
 
         return (
-            <div>
-                {author}
-            </div>
+            <Fragment>
+                <div>{author}</div>
+                <div>{ optionOne.text }</div>
+                <div>{ optionTwo.text }</div>
+            </Fragment>
         )
     }
 }
@@ -17,7 +19,7 @@ function mapStateToProps({ questions }, { id }) {
     const question = questions[id]
 
     return {
-        question
+        question,
     }
 }
 

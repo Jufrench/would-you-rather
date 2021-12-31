@@ -9,9 +9,11 @@ export default function questions(state = {}, action) {
             }
         case SAVE_QUESTION :
             console.log('%cquestion', 'text-decoration: underline', action)
+            const { question } = action
             return {
                 ...state,
-                ...state.questions.concat()
+                ...action.questions,
+                [question.id]: question
             }
         default :
             return state

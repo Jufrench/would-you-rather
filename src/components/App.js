@@ -4,23 +4,39 @@ import Login from './Login';
 import Nav from './Nav';
 import Home from './Home';
 import NewQuestion from './NewQuestion';
+import QuestionPage from './QuestionPage'
 import handleInitialData from '../actions/shared'
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
+    console.log('%capp:', 'color:tomato', this.props)
   }
 
   render() {
     return (
       <div>
+        {/* {this.props.authedUser === null ? */}
         <Login />
-        <Nav />
-        <Home />
-        <NewQuestion />
+        {/* : */}
+         {/* <div> */}
+          <Nav />
+          <Home />
+          <NewQuestion />
+          <hr />
+          <QuestionPage match={{params: {id: '8xf0y6ziyjabvozdd253nd'}}} />
+          {/* </div> */}
+        {/* } */}
+        
       </div>
     )
   }
 }
 
-export default connect()(App);
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(App);

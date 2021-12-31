@@ -1,30 +1,47 @@
 import React, { Component } from "react"
 import { connect } from 'react-redux'
+import { handleSaveQuestion } from '../actions/questions'
 
 class NewQuestion extends Component {
     state = {
-        newOptionOne: '',
-        newOptionTwo: '',
+        optionOneText: '',
+        optionTwoText: '',
     }
 
-    handleChange = e => {
-        console.log('changing')
+    handleChangeOne = e => {
+        const text = e.target.value
+        this.setState(() => ({ optionOneText: text }))
+    }
+
+    handleChangeTwo = e => {
+        const text = e.target.value
+        this.setState(() => ({ optionTwoText: text }))
     }
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log('new question submitted')
+        const { optionOneText, optionTwoText } = this.state
+        // console.log('optionOneText', optionOneText)
+        // this.props.dispatch(handleSaveQuestion())
+        this.props.dispatch(handleSaveQuestion({
+            optionOneText,
+            optionTwoText
+        }))
     }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <input onChange={this.handleChange} />
-                <input onChange={this.handleChange} />
+                <input onChange={this.handleChangeOne} />
+                <input onChange={this.handleChangeTwo} />
                 <button type="submit">Submit</button>
             </form>
         )
     }
 }
 
-export default NewQuestion
+// function mapStateToProps() {
+
+// }
+
+export default connect()(NewQuestion)

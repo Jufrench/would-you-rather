@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import questions from '../reducers/questions'
 import Question from './Question'
 
 class Home extends Component {
