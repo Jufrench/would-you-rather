@@ -157,8 +157,6 @@ let users = {
           ...questions,
           [formattedQuestion.id]: formattedQuestion
         }
-
-        console.log(questions)
         
         users = {
           ...users,

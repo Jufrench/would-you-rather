@@ -34,6 +34,7 @@ export function handleSaveQuestion(question) {
 
 // }
 
-// export function handleAnswerQuestion() {
-//     dispatch(answerQuestion())
-// }
+export function handleAnswerQuestion() {
+    // dispatch(answerQuestion())
+    console.log('saving answer')
+}

@@ -6,11 +6,16 @@ import Home from './Home';
 import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage'
 import handleInitialData from '../actions/shared'
+// temp
+import { setAuthedUser } from '../actions/authedUser'
+//temp
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
-    console.log('%capp:', 'color:tomato', this.props)
+    //temp
+    this.props.dispatch(setAuthedUser('sarahedo'))
+    //temp
   }
 
   render() {
@@ -24,7 +29,7 @@ class App extends Component {
           <Home />
           <NewQuestion />
           <hr />
-          <QuestionPage match={{params: {id: '8xf0y6ziyjabvozdd253nd'}}} />
+          <QuestionPage match={{params: { id: '8xf0y6ziyjabvozdd253nd' }}} />
           {/* </div> */}
         {/* } */}
         

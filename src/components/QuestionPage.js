@@ -3,13 +3,34 @@ import { connect } from 'react-redux'
 import Question from './Question'
 
 class QuestionPage extends Component {
+
+    hasVotes() {
+        const { id } = this.props
+        const question = this.props.questions[id]
+
+        if (!question) {
+            return '...'
+        } else {
+            console.log(question.optionOne.votes.length > 0
+                || question.optionTwo.votes.length > 0)
+            // return question.optionOne.votes.length > 0
+                // || question.optionTwo.votes.length > 0
+            return 'has votes'
+        }
+    }
+
     render() {
         const { id } = this.props
-        console.log('id ===', id)
+
+        if (!this.props.questions) {
+            return
+        }
+
         return (
             <div>
                 <h3>Question Page</h3>
-                {/* <Question id={id} /> */}
+                <Question id={id} />
+                {/* {onQuestionPage && this.hasVotes()} */}
             </div>
             
         )
@@ -21,6 +42,7 @@ function mapStateToProps({ authedUser, questions }, props) {
 
     return {
         id,
+        questions
     }
 }
 
