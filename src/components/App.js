@@ -8,7 +8,9 @@ import QuestionPage from './QuestionPage'
 import handleInitialData from '../actions/shared'
 // temp
 import { setAuthedUser } from '../actions/authedUser'
+import Leaderboard from './Leaderboard';
 //temp
+
 
 class App extends Component {
   componentDidMount() {
@@ -25,14 +27,14 @@ class App extends Component {
         <Login />
         {/* : */}
          {/* <div> */}
-          <Nav />
+          <Nav authedUser={this.props.authedUser} />
           <Home />
           <NewQuestion />
           <hr />
           <QuestionPage match={{params: { id: '8xf0y6ziyjabvozdd253nd' }}} />
           {/* </div> */}
         {/* } */}
-        
+        <Leaderboard />
       </div>
     )
   }

@@ -30,7 +30,8 @@ class Question extends Component {
                     ? <VoteInfo 
                         canVote={canVote}
                         optionOne={optionOne}
-                        optionTwo={optionTwo} />
+                        optionTwo={optionTwo}
+                        qid={question.id} />
                     : <VoteInfo question={question} />}
             </Fragment>
         )

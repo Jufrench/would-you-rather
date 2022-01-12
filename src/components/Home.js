@@ -47,9 +47,12 @@ class Home extends Component {
     }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, users }) {
+    console.log('%cusers', 'color:goldenrod', users)
+    console.log('%cquestions', 'color:violet', questions)
     const unansweredIds = Object.keys(questions)
         .filter(q => {
+            // console.log('%cq', 'color:dodgerblue', q)
             return questions[q].optionOne.votes.length === 0 
                 && questions[q].optionTwo.votes.length === 0
         })

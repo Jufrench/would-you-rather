@@ -7,10 +7,15 @@ class VoteInfo extends Component {
         voteOption: null,
     }
 
+    handleVoteOption = e => {
+        const text = e.target.value
+        this.setState(() => ({ voteOption: text}))
+    }
+
     handleSubmit = e => {
         e.preventDefault()
-        console.log('submitted!')
-        this.props.dispatch(handleAnswerQuestion)
+        const { qid } = this.props
+        this.props.dispatch(handleAnswerQuestion(qid, this.state.voteOption))
     }
 
     render() {
@@ -19,18 +24,28 @@ class VoteInfo extends Component {
         //     || question.optionTwo.votes.length > 0
             
         // console.log('hasVotes:', hasVotes)
+        const { optionOne, optionTwo } = this.props
+        
         if (this.props.canVote) {
             return (
                 <form 
                     onSubmit={this.handleSubmit}
                     style={{border: '2px solid limegreen'}}>
                     <label>
-                        {this.props.optionOne.text}
-                        <input type="radio" name="voteOption" />
+                        {optionOne.text}
+                        <input 
+                            value="optionOne"
+                            type="radio" 
+                            name="voteOption"
+                            onChange={this.handleVoteOption} />
                     </label>
                     <label>
-                        {this.props.optionTwo.text}
-                        <input type="radio" name="voteOption" />
+                        {optionTwo.text}
+                        <input 
+                            value="optionTwo"
+                            type="radio" 
+                            name="voteOption"
+                            onChange={this.handleVoteOption} />
                     </label>
                     <button type="submit">Submit</button>
                 </form>
@@ -44,4 +59,10 @@ class VoteInfo extends Component {
     }
 }
 
-export default connect()(VoteInfo)
+function mapStateToProps() {
+    return {
+        
+    }
+}
+
+export default connect(mapStateToProps)(VoteInfo)

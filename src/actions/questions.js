@@ -1,7 +1,8 @@
-import { _saveQuestion } from '../utils/_DATA'
+import { _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA'
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
+export const SAVE_ANSWER = 'SAVE_ANSWER'
 
 export function getQuestions(questions) {
     return {
@@ -30,11 +31,26 @@ export function handleSaveQuestion(question) {
     }
 }
 
-// function answerQuestion() {
+function saveQuestionAnswer(question, authedUser, answer) {
+    return {
+        type: SAVE_ANSWER,
+        question,
+        authedUser,
+        answer
+    }
+}
 
-// }
+export function handleAnswerQuestion(qid, answer) {
+    return (dispatch, getState) => {
+        const { authedUser, questions } = getState()
+        const question = questions[qid]
 
-export function handleAnswerQuestion() {
-    // dispatch(answerQuestion())
-    console.log('saving answer')
+        return _saveQuestionAnswer({
+            authedUser,
+            qid,
+            answer
+        }).then(() => {
+            dispatch(saveQuestionAnswer(question, authedUser, answer))
+        })
+    }
 }
