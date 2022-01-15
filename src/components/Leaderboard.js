@@ -4,9 +4,8 @@ import User from "./User"
 
  class Leaderboard extends Component {
      render() {
-        console.log('this.props.userNames', this.props.userNames)
         return (
-            <Fragment>
+            <div style={{border: '2px dashed tomato'}}>
                 <div>Leaderboard</div>
                 <ul>
                     {this.props.userNames.map(user => (
@@ -14,13 +13,12 @@ import User from "./User"
                         <User key={user} userName={user} />
                     ))}
                 </ul>
-            </Fragment>
+            </div>
         )
     }
 }
 
 function mapStateToProps({ users }) {
-    console.log('users:', users)
     return {
         userNames: Object.keys(users)
       }

@@ -11,10 +11,6 @@ class QuestionPage extends Component {
         if (!question) {
             return '...'
         } else {
-            console.log(question.optionOne.votes.length > 0
-                || question.optionTwo.votes.length > 0)
-            // return question.optionOne.votes.length > 0
-                // || question.optionTwo.votes.length > 0
             return 'has votes'
         }
     }

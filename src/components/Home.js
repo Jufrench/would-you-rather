@@ -48,24 +48,21 @@ class Home extends Component {
 }
 
 function mapStateToProps({ questions, users }) {
-    console.log('%cusers', 'color:goldenrod', users)
-    console.log('%cquestions', 'color:violet', questions)
     const unansweredIds = Object.keys(questions)
         .filter(q => {
-            // console.log('%cq', 'color:dodgerblue', q)
             return questions[q].optionOne.votes.length === 0 
                 && questions[q].optionTwo.votes.length === 0
-        })
+        }).sort((a,b) => questions[b].timestamp - questions[a].timestamp)
 
     const answeredIds = Object.keys(questions)
         .filter(q => {
             return questions[q].optionOne.votes.length > 0 
                 || questions[q].optionTwo.votes.length > 0
-        })
-
+        }).sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+    
     return {
-      questionIds: Object.keys(questions)
-        .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
+        // questionIds: Object.keys(questions)
+        //     .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
         unansweredIds,
         answeredIds
     }

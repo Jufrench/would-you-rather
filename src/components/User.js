@@ -3,11 +3,14 @@ import { connect } from "react-redux"
 
 class User extends Component {
     render() {
-        console.log('user:', this.props)
+        const { user } = this.props
+        
         return (
             <li>
-                <p>{this.props.userName}</p>
-                <p>details</p>
+                <div>{this.props.userName}</div>
+                <div>user image</div>
+                <div>{Object.keys(user.answers).length} questions answered</div>
+                <div>{user.questions.length} questions asked</div>
             </li>
         )
     }
@@ -15,7 +18,7 @@ class User extends Component {
 
 function mapStateToProps({ users }, { userName }) {
     const user = users[userName]
-    console.log('userName:', user)
+
     return {
         user
     }

@@ -19,11 +19,6 @@ class VoteInfo extends Component {
     }
 
     render() {
-        // const { question } = this.props
-        // const hasVotes = question.optionOne.votes.length > 0
-        //     || question.optionTwo.votes.length > 0
-            
-        // console.log('hasVotes:', hasVotes)
         const { optionOne, optionTwo } = this.props
         
         if (this.props.canVote) {
@@ -51,6 +46,8 @@ class VoteInfo extends Component {
                 </form>
             )
         } else {
+            const { question } = this.props
+            console.log('question:', question)
             return (
                 <h3>VOTE INFO</h3>
             )
@@ -59,9 +56,9 @@ class VoteInfo extends Component {
     }
 }
 
-function mapStateToProps() {
+function mapStateToProps({}) {
     return {
-        
+
     }
 }
 

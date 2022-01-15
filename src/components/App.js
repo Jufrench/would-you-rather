@@ -16,24 +16,24 @@ class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
     //temp
-    this.props.dispatch(setAuthedUser('sarahedo'))
+    // this.props.dispatch(setAuthedUser('sarahedo'))
     //temp
   }
 
   render() {
     return (
       <div>
-        {/* {this.props.authedUser === null ? */}
+        {this.props.authedUser === null ?
         <Login />
-        {/* : */}
-         {/* <div> */}
-          <Nav authedUser={this.props.authedUser} />
+         : 
+          <div> 
+          <Nav />
           <Home />
           <NewQuestion />
           <hr />
           <QuestionPage match={{params: { id: '8xf0y6ziyjabvozdd253nd' }}} />
-          {/* </div> */}
-        {/* } */}
+          </div> 
+        } 
         <Leaderboard />
       </div>
     )

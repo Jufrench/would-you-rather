@@ -17,15 +17,21 @@ class Question extends Component {
         // todo: replace this w/ react router location
         const onQuestionPage = window.location.pathname
             .includes('questions')
-        const canVote = !hasVotes && onQuestionPage
-
-        // console.log('canVote:', canVote)        
+        const canVote = !hasVotes && onQuestionPage       
 
         return (
             <Fragment>
                 <div>{author}</div>
-                <div>{ optionOne.text }</div>
-                <div>{ optionTwo.text }</div>
+                <div>
+                    <span>{optionOne.text}</span>
+                    <span> ({optionOne.votes.length} 
+                        {optionOne.votes.length === 1 ? ' vote' : ' votes' })</span>
+                </div>
+                <div>
+                    <span>{optionTwo.text}</span>
+                    <span> ({optionTwo.votes.length} 
+                        {optionTwo.votes.length === 1 ? ' vote' : ' votes' })</span>
+                </div>
                 {canVote 
                     ? <VoteInfo 
                         canVote={canVote}
