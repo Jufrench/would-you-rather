@@ -3,12 +3,6 @@ import { connect } from 'react-redux'
 import QuestionDetails from './QuestionDetails'
 
 class QuestionPage extends Component {
-
-    hasVotes() {
-        const { id } = this.props
-        const question = this.props.questions[id]
-    }
-
     render() {
         const { activeQuestion, questions } = this.props
         const qid = questions[activeQuestion].id

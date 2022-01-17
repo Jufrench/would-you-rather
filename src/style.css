@@ -3,7 +3,7 @@
 }
 
 body {
-    background: #ababab;
+    background: #333;
     margin-top: 0;
 }
 
@@ -20,6 +20,93 @@ ul {
 
 a {
     text-decoration: none;
+    color: #333;
+}
+
+.login-modal {
+    background: #fff;
+    padding: 0;
+    width: 50%;
+    height: 40vh;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.login-modal-inner {
+
+}
+
+.login-modal-title {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.login-modal-form {
+    display: block;
+    margin-top: 100px;
+}
+
+.login-modal-form-select {
+    margin-right: 4px;
+}
+
+.header {
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 50%;
+}
+
+.nav-list-item {
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.nav-list-item-link {
+    padding: 16px 10px;
+    display: inline-block;
+    height: 90%;
+    width: 100%;
+}
+
+.nav-list-item-link:hover {
+    background: #c1c1c1;
+}
+
+.nav-user {
+    flex-grow: 1;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav-user-name {
+    display: inline;
+    margin-right: 4px;
+}
+
+.main {
+    background: #fff;
+    padding: 16px;
 }
 
 .home-question-item + .home-question-item {

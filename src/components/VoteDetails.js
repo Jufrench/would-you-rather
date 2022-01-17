@@ -61,10 +61,4 @@ class VoteDetails extends Component {
     }
 }
 
-function mapStateToProps({}) {
-    return {
-
-    }
-}
-
-export default connect(mapStateToProps)(VoteDetails)
+export default connect()(VoteDetails)

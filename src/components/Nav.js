@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 import { NavLink } from 'react-router-dom'
+import NavItem from "./NavItem"
 
  class Nav extends Component {
 
@@ -10,31 +11,21 @@ import { NavLink } from 'react-router-dom'
     }
 
     render() {
+        const navDestinations = ['Home', 'Leaderboard', 'Add']
+
         return (
-            <header style={{border: '1px solid limegreen'}}>
-                <nav>
-                    <ul>
-                        <li>
-                            <NavLink to='/home'>
-                                Home
-                            </NavLink>
-                        </li>
-                        <li>                            
-                            <NavLink to='/leaderboard'>
-                                Leaderboard
-                            </NavLink>
-                        </li>
-                        <li>                            
-                            <NavLink to='/add'>
-                                Add Question
-                            </NavLink>
-                        </li>
-                        <li>
-                            <span>Logged in as: {this.props.authedUser}</span>
-                            {this.props.authedUser !== null &&
-                                <button onClick={this.logout}>Logout</button>}
-                        </li>
+            <header className="header">
+                <nav className="nav">
+                    <ul className="nav-list">
+                        {navDestinations.map(dest => (
+                            <NavItem key={dest} destination={dest} />
+                        ))}
                     </ul>
+                    <div className="nav-user">
+                        <h4 className="nav-user-name">{this.props.authedUser}</h4>
+                        {this.props.authedUser !== null &&
+                            <button onClick={this.logout}>Logout</button>}
+                    </div>
                 </nav>
             </header>
         )

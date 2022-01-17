@@ -27,20 +27,24 @@ class Login extends Component {
 
     render() {
         return (
-            <div style={{border: '1px solid gold'}}>
-                <form onSubmit={this.handleSubmit} style={{display: 'inline-block'}}>
-                    <label>Choose a user </label>
-                    <select 
-                        name="users" 
-                        id="users" 
-                        onChange={this.handleChangeUser}>
-                            <option>Select</option>
-                            {this.props.userIds.map(id => (
-                                <option key={id} value={id}>{id}</option>
-                            ))}
-                    </select>
-                    <button type="submit">Login</button>
-                </form>
+            <div className="login-modal">
+                <div className="login-modal-inner">
+                    <h2 className="login-modal-title">Would You Rather?</h2>
+                    <form onSubmit={this.handleSubmit} className="login-modal-form">
+                        <label>Choose a user </label>
+                        <select 
+                            className="login-modal-form-select"
+                            name="users" 
+                            id="users" 
+                            onChange={this.handleChangeUser}>
+                                <option>Select</option>
+                                {this.props.userIds.map(id => (
+                                    <option key={id} value={id}>{id}</option>
+                                ))}
+                        </select>
+                        <button type="submit" className="login-modal-submit">Login</button>
+                    </form>
+                </div>
             </div>
         )
     }

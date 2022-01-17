@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import VoteDetails from './VoteDetails'
+import Profile from './Profile'
 
 class QuestionDetails extends Component {
     state = {
@@ -9,15 +10,17 @@ class QuestionDetails extends Component {
     }
 
     render() {
-        const { question } = this.props
-        console.log('hasVoted:', this.state.hasVoted)
+        const { question, id } = this.props
 
         return (
-            <VoteDetails 
-                hasVoted={this.state.hasVoted}
-                optionOne={question.optionOne}
-                optionTwo={question.optionTwo} 
-                qid={this.props.id} />
+            <Fragment>
+                <Profile />
+                <VoteDetails 
+                    hasVoted={this.state.hasVoted}
+                    optionOne={question.optionOne}
+                    optionTwo={question.optionTwo} 
+                    qid={id} />
+            </Fragment>
         )
     }
 }

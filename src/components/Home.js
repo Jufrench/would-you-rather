@@ -13,7 +13,7 @@ class Home extends Component {
 
     render() {
         return (
-            <main>
+            <main className='main'>
                 <button 
                     onClick={() => this.changeTabView()}
                     disabled={this.state.unanswered}>
