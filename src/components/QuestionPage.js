@@ -7,16 +7,11 @@ class QuestionPage extends Component {
     hasVotes() {
         const { id } = this.props
         const question = this.props.questions[id]
-
-        if (!question) {
-            return '...'
-        } else {
-            return 'has votes'
-        }
     }
 
     render() {
-        const { id } = this.props
+        const { activeQuestion, questions } = this.props
+        const qid = questions[activeQuestion].id
 
         if (!this.props.questions) {
             return
@@ -25,7 +20,9 @@ class QuestionPage extends Component {
         return (
             <div>
                 <h3>Question Page</h3>
-                <Question id={id} />
+                <div style={{border:'1px solid tomato'}}>
+                    <Question id={qid} />
+                </div>
                 {/* {onQuestionPage && this.hasVotes()} */}
             </div>
             
@@ -33,12 +30,10 @@ class QuestionPage extends Component {
     }
 }
 
-function mapStateToProps({ authedUser, questions }, props) {
-    const { id } = props.match.params
-
+function mapStateToProps({ questions, activeQuestion }) {
     return {
-        id,
-        questions
+        questions,
+        activeQuestion,
     }
 }
 

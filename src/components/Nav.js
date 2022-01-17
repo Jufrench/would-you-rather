@@ -1,8 +1,7 @@
 import React, { Component } from "react"
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
-import { Routes, Route, NavLink } from 'react-router-dom'
-import Leaderboard from "./Leaderboard"
+import { NavLink } from 'react-router-dom'
 
  class Nav extends Component {
 

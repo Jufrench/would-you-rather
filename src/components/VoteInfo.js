@@ -47,7 +47,7 @@ class VoteInfo extends Component {
             )
         } else {
             const { question } = this.props
-            console.log('question:', question)
+
             return (
                 <h3>VOTE INFO</h3>
             )

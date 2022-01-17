@@ -8,7 +8,6 @@ import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage'
 import handleInitialData from '../actions/shared'
 // temp
-import { setAuthedUser } from '../actions/authedUser'
 import Leaderboard from './Leaderboard';
 //temp
 
@@ -16,9 +15,6 @@ import Leaderboard from './Leaderboard';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
-    //temp
-    // this.props.dispatch(setAuthedUser('sarahedo'))
-    //temp
   }
 
   render() {
@@ -53,13 +49,14 @@ class App extends Component {
           <Route exact path="/home" element={<Home />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/add" element={<NewQuestion />} />
+          <Route path="/questions/:question_id" element={<QuestionPage />} />
         </Routes>
         </div>
     )
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, activeQuestion }) {
   return {
     authedUser
   }

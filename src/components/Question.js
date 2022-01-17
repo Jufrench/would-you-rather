@@ -1,12 +1,18 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import VoteInfo from './VoteInfo'
+import { Link } from 'react-router-dom'
+import { setActiveQuestion } from '../actions/activeQuestion'
 
 class Question extends Component {
-    render() {
-        const { question } = this.props
+    handleClick = () => {
+        this.props.dispatch(setActiveQuestion(this.props.question.id))
+    }
 
-        if (!question) {
+    render() {
+        const { question, questions, id } = this.props
+
+        if (question === null) {
             return <p>Loading...</p>
         }
 
@@ -14,13 +20,12 @@ class Question extends Component {
         const hasVotes = question.optionOne.votes.length > 0
             || question.optionTwo.votes.length > 0
 
-        // todo: replace this w/ react router location
-        const onQuestionPage = window.location.pathname
-            .includes('questions')
-        const canVote = !hasVotes && onQuestionPage       
+        // const onQuestionPage = window.location.pathname
+        //     .includes('questions')
+        // const canVote = !hasVotes && onQuestionPage   
 
         return (
-            <Fragment>
+            <Link to={`/questions/${question.id}`} onClick={this.handleClick}>
                 <div>{author}</div>
                 <div>
                     <span>{optionOne.text}</span>
@@ -32,23 +37,22 @@ class Question extends Component {
                     <span> ({optionTwo.votes.length} 
                         {optionTwo.votes.length === 1 ? ' vote' : ' votes' })</span>
                 </div>
-                {canVote 
+                {/* {canVote 
                     ? <VoteInfo 
                         canVote={canVote}
                         optionOne={optionOne}
                         optionTwo={optionTwo}
                         qid={question.id} />
-                    : <VoteInfo question={question} />}
-            </Fragment>
+                    : <VoteInfo question={question} />} */}
+            </Link>
         )
     }
 }
 
 function mapStateToProps({ questions }, { id }) {
     const question = questions[id]
-
     return {
-        question,
+        question: question ? question : null,
     }
 }
 

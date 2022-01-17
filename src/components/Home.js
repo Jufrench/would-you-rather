@@ -24,23 +24,21 @@ class Home extends Component {
                     disabled={!this.state.unanswered}>
                     Answered
                 </button>
-                    {this.state.unanswered
-                    ? 
-                    <ul style={{border: '1px solid dodgerblue'}}>
-                        {this.props.unansweredIds.map(id => (
-                            <li key={id}>
-                                <Question id={id} />
-                            </li>
-                        ))}
-                    </ul>
-                    : 
-                    <ul style={{border: '1px solid tomato'}}>
-                        {this.props.answeredIds.map(id => (
-                            <li key={id}>
-                                <Question id={id} />
-                            </li>
-                        ))}
-                    </ul>
+                    {this.state.unanswered ? 
+                        <ul style={{border: '1px solid dodgerblue'}}>
+                            {this.props.unansweredIds.map(id => (
+                                <li key={id}>
+                                    <Question id={id} />
+                                </li>
+                            ))}
+                        </ul> : 
+                        <ul style={{border: '1px solid tomato'}}>
+                            {this.props.answeredIds.map(id => (
+                                <li key={id}>
+                                    <Question id={id} />
+                                </li>
+                            ))}
+                        </ul>
                     }
             </main>
         )
@@ -69,6 +67,3 @@ function mapStateToProps({ questions, users }) {
 }
 
 export default connect(mapStateToProps)(Home)
-
-// * question ids should be the ids of either the unanswered or answered questions
-// * then you'll map over each of those and render the individual questions
