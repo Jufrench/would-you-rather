@@ -23,11 +23,11 @@ class VoteDetails extends Component {
     }
 
     render() {
-        const { optionOne, optionTwo } = this.props
-
         if (this.state.toHome) {
             return <Navigate to="/home" />
         }
+        
+        const { optionOne, optionTwo } = this.props
         
         if (this.props.hasVoted) {
             return (
