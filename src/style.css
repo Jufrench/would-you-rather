@@ -1,3 +1,52 @@
+*, *:before, *:after {
+    box-sizing: border-box;    
+}
+
 body {
     background: #ababab;
+    margin-top: 0;
+}
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.home-question-item + .home-question-item {
+    margin-top: 10px;
+}
+
+.home-question-link {
+    display: block;
+    border: 1px solid #333;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.home-question-author {
+    border-right: 1px solid #333;
+    /* padding: 8px; */
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-question-text {
+    padding: 4px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }

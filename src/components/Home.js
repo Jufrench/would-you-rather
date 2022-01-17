@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import QuestionLink from './QuestionLink'
 
 class Home extends Component {
     state = {
@@ -25,17 +25,17 @@ class Home extends Component {
                     Answered
                 </button>
                     {this.state.unanswered ? 
-                        <ul style={{border: '1px solid dodgerblue'}}>
+                        <ul>
                             {this.props.unansweredIds.map(id => (
-                                <li key={id}>
-                                    <Question id={id} />
+                                <li key={id} className='home-question-item'>
+                                    <QuestionLink id={id} />
                                 </li>
                             ))}
-                        </ul> : 
-                        <ul style={{border: '1px solid tomato'}}>
+                        </ul>: 
+                        <ul>
                             {this.props.answeredIds.map(id => (
-                                <li key={id}>
-                                    <Question id={id} />
+                                <li key={id} className='home-question-item'>
+                                    <QuestionLink id={id} />
                                 </li>
                             ))}
                         </ul>

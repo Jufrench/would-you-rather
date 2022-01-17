@@ -1,10 +1,12 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { handleAnswerQuestion } from "../actions/questions"
+import { Navigate } from 'react-router-dom'
 
-class VoteInfo extends Component {
+class VoteDetails extends Component {
     state = {
         voteOption: null,
+        toHome: false,
     }
 
     handleVoteOption = e => {
@@ -16,18 +18,28 @@ class VoteInfo extends Component {
         e.preventDefault()
         const { qid } = this.props
         this.props.dispatch(handleAnswerQuestion(qid, this.state.voteOption))
+
+        this.setState(() => ({ toHome: true }))
     }
 
     render() {
         const { optionOne, optionTwo } = this.props
+
+        if (this.state.toHome) {
+            return <Navigate to="/home" />
+        }
         
-        if (this.props.canVote) {
+        if (this.props.hasVoted) {
             return (
-                <form 
-                    onSubmit={this.handleSubmit}
-                    style={{border: '2px solid limegreen'}}>
+                <div>
+                    VOTE DETAILS
+                </div>
+            )
+        } else {
+            return (
+                <form onSubmit={this.handleSubmit}>
                     <label>
-                        {optionOne.text}
+                    {optionOne.text}    
                         <input 
                             value="optionOne"
                             type="radio" 
@@ -45,14 +57,7 @@ class VoteInfo extends Component {
                     <button type="submit">Submit</button>
                 </form>
             )
-        } else {
-            const { question } = this.props
-
-            return (
-                <h3>VOTE INFO</h3>
-            )
         }
-        
     }
 }
 
@@ -62,4 +67,4 @@ function mapStateToProps({}) {
     }
 }
 
-export default connect(mapStateToProps)(VoteInfo)
+export default connect(mapStateToProps)(VoteDetails)

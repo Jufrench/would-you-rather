@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import QuestionDetails from './QuestionDetails'
 
 class QuestionPage extends Component {
 
@@ -19,11 +19,10 @@ class QuestionPage extends Component {
 
         return (
             <div>
-                <h3>Question Page</h3>
+                <h3>Would You Rather?</h3>
                 <div style={{border:'1px solid tomato'}}>
-                    <Question id={qid} />
+                    <QuestionDetails id={qid} />
                 </div>
-                {/* {onQuestionPage && this.hasVotes()} */}
             </div>
             
         )
