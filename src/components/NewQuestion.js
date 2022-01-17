@@ -29,10 +29,7 @@ class NewQuestion extends Component {
             optionTwoText
         }))
 
-        setTimeout(() => {
-            console.log('props', this.props);
-            this.setState(() => ({ toHome: true }))
-        }, 2000)
+        this.setState(() => ({ toHome: true }))
     }
 
     render() {
