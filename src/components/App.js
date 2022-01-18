@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Login from './Login';
-import Nav from './Nav';
-import Home from './Home';
-import NewQuestion from './NewQuestion';
+import Login from './Login'
+import Nav from './Nav'
+import Home from './Home'
+import NewQuestion from './NewQuestion'
 import QuestionPage from './QuestionPage'
 import handleInitialData from '../actions/shared'
-// temp
-import Leaderboard from './Leaderboard';
-//temp
+import Leaderboard from './Leaderboard'
+import RequireAuth from './RequireAuth'
+import NotFound from './NotFound'
 
 
 class App extends Component {
@@ -47,9 +47,20 @@ class App extends Component {
             }
           />
           <Route exact path="/home" element={<Home />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
+          {/* =============================== */}
+          {/* <Route path="/leaderboard" element={<Leaderboard />} /> */}
+          <Route 
+            path="/leaderboard" 
+            element={
+              <RequireAuth>
+                <Leaderboard loggedIn={loggedIn} />
+              </RequireAuth>
+            } 
+          />
+          {/* =============================== */}
           <Route path="/add" element={<NewQuestion />} />
           <Route path="/questions/:question_id" element={<QuestionPage />} />
+          <Route path="/404" element={<NotFound />} />
         </Routes>
         </div>
     )
