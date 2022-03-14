@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { connect } from 'react-redux'
 import { handleSaveQuestion } from '../actions/questions'
 import { Link, Navigate } from 'react-router-dom'
@@ -38,17 +38,24 @@ class NewQuestion extends Component {
         }
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input onChange={this.handleChangeOne} />
-                <input onChange={this.handleChangeTwo} />
-                <button type="submit">Submit</button>
-            </form>
+            <Fragment>
+                <h3>Would You Rather?</h3>
+                <form 
+                    className="new-question-form"
+                    onSubmit={this.handleSubmit}>
+                    <label>
+                        Option 1
+                        <input onChange={this.handleChangeOne} />
+                    </label>
+                    <label>
+                        Option 2
+                        <input onChange={this.handleChangeTwo} />
+                    </label>
+                    <button type="submit">Submit</button>
+                </form>
+            </Fragment>
         )
     }
 }
-
-// function mapStateToProps() {
-
-// }
 
 export default connect()(NewQuestion)

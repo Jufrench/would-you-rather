@@ -7,7 +7,10 @@ import NavItem from "./NavItem"
  class Nav extends Component {
 
     logout = () => {
+        window.location.pathname = ''
         this.props.dispatch(setAuthedUser(null))
+        window.localStorage.removeItem("preAuthedDest")
+        window.localStorage.setItem('loggedOut', true)
     }
 
     render() {

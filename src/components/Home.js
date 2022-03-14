@@ -13,7 +13,7 @@ class Home extends Component {
 
     render() {
         return (
-            <main className='main'>
+            <div className='home'>
                 <button 
                     onClick={() => this.changeTabView()}
                     disabled={this.state.unanswered}>
@@ -24,14 +24,17 @@ class Home extends Component {
                     disabled={!this.state.unanswered}>
                     Answered
                 </button>
-                    {this.state.unanswered ? 
-                        <ul>
-                            {this.props.unansweredIds.map(id => (
-                                <li key={id} className='home-question-item'>
-                                    <QuestionLink id={id} />
-                                </li>
-                            ))}
-                        </ul>: 
+                    {this.state.unanswered ?
+                        <div>
+                            <h3>Would You Rather?</h3>
+                            <ul>
+                                {this.props.unansweredIds.map(id => (
+                                    <li key={id} className='home-question-item'>
+                                        <QuestionLink id={id} />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div> : 
                         <ul>
                             {this.props.answeredIds.map(id => (
                                 <li key={id} className='home-question-item'>
@@ -40,7 +43,7 @@ class Home extends Component {
                             ))}
                         </ul>
                     }
-            </main>
+            </div>
         )
     }
 }
@@ -59,8 +62,6 @@ function mapStateToProps({ questions, users }) {
         }).sort((a,b) => questions[b].timestamp - questions[a].timestamp)
     
     return {
-        // questionIds: Object.keys(questions)
-        //     .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
         unansweredIds,
         answeredIds
     }

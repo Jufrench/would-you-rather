@@ -10,6 +10,7 @@ body {
 .container {
     width: 70%;
     margin: 0 auto;
+    /* background: #fff; */
 }
 
 ul {
@@ -21,6 +22,20 @@ ul {
 a {
     text-decoration: none;
     color: #333;
+}
+
+.please-login {
+    background: red;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.hide {
+    display: none;
 }
 
 .login-modal {
@@ -57,14 +72,15 @@ a {
 }
 
 .header {
-    background: #fff;
-    margin-bottom: 10px;
+    /* background: #fff; */
+    /* background: #333; */
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
     padding: 0 16px;
+    background: #fff;
 }
 
 .nav-list {
@@ -81,10 +97,10 @@ a {
 }
 
 .nav-list-item-link {
-    padding: 16px 10px;
+    padding: 10px;
     display: inline-block;
-    height: 90%;
-    width: 100%;
+    /* height: 90%; */
+    /* width: 100%; */
 }
 
 .nav-list-item-link:hover {
@@ -97,6 +113,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding: 0 10px;
 }
 
 .nav-user-name {
@@ -105,8 +122,12 @@ a {
 }
 
 .main {
-    background: #fff;
     padding: 16px;
+    padding-top: 20px;
+}
+
+.main-ready {
+    background: #fff;
 }
 
 .home-question-item + .home-question-item {
@@ -136,4 +157,67 @@ a {
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+}
+
+.user-name {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.home-question-author .user-avatar {
+    background-position: center;
+    background-size: cover;
+    height: 70px;
+}
+
+.vote-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.vote-details-inner {
+
+}
+
+.new-question-form {
+    display: flex;
+    align-items: flex-end;
+}
+
+.new-question-form input {
+    display: block;
+}
+
+.leaderboard-item {
+    display: flex;
+}
+
+.leaderboard-item + .leaderboard-item {
+    margin-top: 10px;
+}
+
+.leaderboard-item:nth-child(odd) {
+    background: #eaeaea;
+}
+
+.leaderboard-item .user-avatar {
+    background-position: center;
+    background-size: cover;
+    height: 70px;
+}
+
+.leaderboard-item .leaderboard-questions-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-404 .heading {
+    text-align: center;
 }

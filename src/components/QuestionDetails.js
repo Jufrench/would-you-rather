@@ -10,11 +10,11 @@ class QuestionDetails extends Component {
     }
 
     render() {
-        const { question, id } = this.props
+        const { question, id, user } = this.props
 
         return (
             <Fragment>
-                <Profile />
+                <Profile user={user} />
                 <VoteDetails 
                     hasVoted={this.state.hasVoted}
                     optionOne={question.optionOne}
@@ -25,9 +25,10 @@ class QuestionDetails extends Component {
     }
 }
 
-function mapStateToProps({ questions }, { id }) {
+function mapStateToProps({ questions, users }, { id }) {
     return {
-        question: questions[id]
+        question: questions[id],
+        user: users[questions[id]['author']]
     }
 }
 

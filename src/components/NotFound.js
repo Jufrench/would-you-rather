@@ -35,13 +35,15 @@ class NotFound extends Component {
     handleGoToLoginNow = () => {
         clearInterval(this.state.countdownId)
         this.setState(() => ({ toHome: true }))
+        window.location.pathname = ''
     }
 
     render() {
         return (
             this.state.toHome ?
                 <Navigate to={'/'} /> :
-            <div>
+            <div className='error-404'>
+                <h3 className='heading'>ERROR 404</h3>
                 <h3>Would You Rather?</h3>
                 <button onClick={this.handleShowWaitText}>
                     Wait to be redirected to the login page after the countdown ends in...

@@ -6,11 +6,15 @@ class User extends Component {
         const { user } = this.props
         
         return (
-            <li>
-                <div>{this.props.userName}</div>
-                <div>user image</div>
-                <div>{Object.keys(user.answers).length} questions answered</div>
-                <div>{user.questions.length} questions asked</div>
+            <li className="leaderboard-item">
+                <div>
+                    <article>{this.props.userName}</article>
+                    <div className='user-avatar' style={{backgroundImage: `url(${user.avatarURL})`}}></div>
+                </div>
+                <div className="leaderboard-questions-info">
+                    <div>{Object.keys(user.answers).length} questions answered</div>
+                    <div>{user.questions.length} questions asked</div>
+                </div>
             </li>
         )
     }

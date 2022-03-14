@@ -5,11 +5,10 @@ import User from "./User"
  class Leaderboard extends Component {
      render() {
         return (
-            <div style={{border: '2px dashed tomato'}}>
-                <div>Leaderboard</div>
+            <div>
+                <h3>Leaderboard</h3>
                 <ul>
                     {this.props.userNames.map(user => (
-                        // <p key={user}>{user}</p>
                         <User key={user} userName={user} />
                     ))}
                 </ul>
@@ -19,8 +18,13 @@ import User from "./User"
 }
 
 function mapStateToProps({ users }) {
+    let orderedUsers = Object.keys(users).sort((a,b) => {
+        return (users[b].questions.length + Object.keys(users[b].answers).length)
+            - (users[a].questions.length + Object.keys(users[a].answers).length)
+    })
+
     return {
-        userNames: Object.keys(users)
+        userNames: orderedUsers
       }
 }
 

@@ -22,7 +22,7 @@ class QuestionLink extends Component {
                 onClick={this.handleClick} 
                 className='home-question-link'>
 
-                <div className='home-question-text'>
+                <div className="home-question-text" style={{border: '2px dashed tomato'}}>
                     <div>{optionOne.text}</div>
                     <div>{optionTwo.text}</div>
                 </div>

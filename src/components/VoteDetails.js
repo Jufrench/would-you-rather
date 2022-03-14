@@ -28,33 +28,47 @@ class VoteDetails extends Component {
         }
         
         const { optionOne, optionTwo } = this.props
+        const votesOne = optionOne.votes.length,
+              votesTwo = optionTwo.votes.length
+        const totalVotes = optionOne.votes.length + optionTwo.votes.length
         
         if (this.props.hasVoted) {
             return (
-                <div>
-                    VOTE DETAILS
+                <div style={{border: '1px solid dodgerblue'}}>
+                    <ul style={{border: '2px solid limegreen'}}>
+                        <li>{optionOne.text} 
+                            <span> - {votesOne} 
+                                {votesOne === 1 ? ' vote' : ' votes'} ({(votesOne/totalVotes)*100}%)
+                            </span>
+                        </li>
+                        <li>{optionTwo.text} 
+                            <span> - {votesTwo} 
+                                {votesTwo === 1 ? ' vote' : ' votes'}  ({(votesTwo/totalVotes)*100}%)
+                            </span>
+                        </li>
+                    </ul>
                 </div>
             )
         } else {
             return (
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                    {optionOne.text}    
-                        <input 
-                            value="optionOne"
-                            type="radio" 
-                            name="voteOption"
-                            onChange={this.handleVoteOption} />
-                    </label>
-                    <label>
-                        {optionTwo.text}
-                        <input 
-                            value="optionTwo"
-                            type="radio" 
-                            name="voteOption"
-                            onChange={this.handleVoteOption} />
-                    </label>
-                    <button type="submit">Submit</button>
+                <form onSubmit={this.handleSubmit} className="vote-details">
+                        <label>
+                        {optionOne.text}    
+                            <input 
+                                value="optionOne"
+                                type="radio" 
+                                name="voteOption"
+                                onChange={this.handleVoteOption} />
+                        </label>
+                        <label>
+                            {optionTwo.text}
+                            <input 
+                                value="optionTwo"
+                                type="radio" 
+                                name="voteOption"
+                                onChange={this.handleVoteOption} />
+                        </label>
+                        <button type="submit">Submit</button>
                 </form>
             )
         }
