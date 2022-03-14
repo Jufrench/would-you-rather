@@ -34,8 +34,8 @@ class VoteDetails extends Component {
         
         if (this.props.hasVoted) {
             return (
-                <div style={{border: '1px solid dodgerblue'}}>
-                    <ul style={{border: '2px solid limegreen'}}>
+                <div>
+                    <ul>
                         <li>{optionOne.text} 
                             <span> - {votesOne} 
                                 {votesOne === 1 ? ' vote' : ' votes'} ({(votesOne/totalVotes)*100}%)

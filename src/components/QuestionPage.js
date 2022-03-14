@@ -17,7 +17,7 @@ class QuestionPage extends Component {
         return (
             <div>
                 <h3>Would You Rather?</h3>
-                <div style={{border:'1px solid tomato', display: 'flex'}}>
+                <div style={{display: 'flex'}}>
                     <QuestionDetails id={qid} />
                 </div>
             </div>
